@@ -81,11 +81,6 @@ if [[ `uname` == 'Darwin' ]]; then
     brew list -1 | grep -q "^gnuplot\$" && brew remove gnuplot
     brew install gnuplot --with-wxmac --with-cairo --with-pdflib-lite --with-x11 --without-lua
 
-    # Force the use of a modern version of clang and standard libraries with OpenMP support.
-    CC=`brew --prefix`/opt/llvm/bin/clang
-    CXX=`brew --prefix`/opt/llvm/bin/clang++
-    LDFLAGS="-L`brew --prefix`/opt/llvm/lib -Wl,-rpath,`brew --prefix`/opt/llvm/lib"
-    CPPFLAGS="-I`brew --prefix`/opt/llvm/include"
 
 elif [[ "$(uname)" == 'Linux' ]]; then
 
