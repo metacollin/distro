@@ -46,10 +46,11 @@ git submodule update --init --recursive
 
 # If we're on OS X, use clang
 if [[ `uname` == "Darwin" ]]; then
-    # make sure that we build with Clang. CUDA's compiler nvcc
-    # does not play nice with any recent GCC version.
-    export CC=clang
-    export CXX=clang++
+    # Force the use of a modern version of clang and standard libraries with OpenMP support.
+    export CC=`brew --prefix`/opt/llvm/bin/clang
+    export CXX=`brew --prefix`/opt/llvm/bin/clang++
+    export LDFLAGS="-L`brew --prefix`/opt/llvm/lib -Wl,-rpath,`brew --prefix`/opt/llvm/lib"
+    export CPPFLAGS="-I`brew --prefix`/opt/llvm/include"
 fi
 
 echo "Installing Lua version: ${TORCH_LUA_VERSION}"
