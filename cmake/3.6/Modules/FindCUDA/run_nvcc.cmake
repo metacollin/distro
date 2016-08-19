@@ -104,17 +104,6 @@ endif()
 # Add the build specific configuration flags
 list(APPEND CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS_${build_configuration}})
 
-# Any -ccbin existing in CUDA_NVCC_FLAGS gets highest priority
-list( FIND CUDA_NVCC_FLAGS "-ccbin" ccbin_found0 )
-list( FIND CUDA_NVCC_FLAGS "--compiler-bindir" ccbin_found1 )
-if( ccbin_found0 LESS 0 AND ccbin_found1 LESS 0 AND CUDA_HOST_COMPILER )
-  if (CUDA_HOST_COMPILER STREQUAL "$(VCInstallDir)bin" AND DEFINED CCBIN)
-    set(CCBIN -ccbin "${CCBIN}")
-  else()
-    set(CCBIN -ccbin "${CUDA_HOST_COMPILER}")
-  endif()
-endif()
-
 # cuda_execute_process - Executes a command with optional command echo and status message.
 #
 #   status  - Status message to print if verbose is true
@@ -187,7 +176,6 @@ cuda_execute_process(
   ${CUDACC_DEFINE}
   "${source_file}"
   -o "${NVCC_generated_dependency_file}"
-  ${CCBIN}
   ${nvcc_flags}
   ${nvcc_host_compiler_flags}
   ${depends_CUDA_NVCC_FLAGS}
@@ -242,7 +230,6 @@ cuda_execute_process(
   "${source_file}"
   ${cuda_language_flag}
   ${format_flag} -o "${generated_file}"
-  ${CCBIN}
   ${nvcc_flags}
   ${nvcc_host_compiler_flags}
   ${CUDA_NVCC_FLAGS}
@@ -272,7 +259,6 @@ if( build_cubin )
     "${source_file}"
     ${CUDA_NVCC_FLAGS}
     ${nvcc_flags}
-    ${CCBIN}
     ${nvcc_host_compiler_flags}
     -DNVCC
     -cubin
