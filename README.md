@@ -1,6 +1,6 @@
 Torch with OpenMP support...on *OS X!*
 ============
-Sometimes, you just can't get that neural network crammed into the seemingly ever-inadequate GPU VRAM.  Sometimes, your network just *needs* to be balls wide and nut deep.  Sometimes, you had to buy a car instead of a workstation with four of [these](http://www.newegg.com/Product/Product.aspx?Item=N82E16814132041)), but also want to test something from home without begging for time on the university cluster.  (DAT CLUSTER ლ(·̿̿益·̿̿ヽ)ლ though.) 
+Sometimes, you just can't get that neural network crammed into the seemingly ever-inadequate GPU VRAM.  Sometimes, your network just *needs* to be balls wide and nut deep.  Sometimes, you had to buy a car instead of a workstation with four of [these](http://www.newegg.com/Product/Product.aspx?Item=N82E16814132041), but also want to test something from home without begging for time on the university cluster.  (DAT CLUSTER ლ(·̿̿益·̿̿ヽ)ლ though.) 
 
 4GB is what people will say is the minimum (kind of like the people who say you can subsist on minimum wage).  8GB is....less inadequate.  
 
